@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //sistem koordinat x
         for (int i = 0; i < 400; i++) {
             dataPoints[i] = new DataPoint(x, y);
-            x += 0.5;
+            x += 10;
         }
 
         //sistem koordinat y
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         y = -100;
         for (int i = 0; i < 400; i++) {
             dataPoints1[i] = new DataPoint(x, y);
-            y += 0.5;
+            y += 10;
         }
 
         //gambarkan koordinat x dan y(kartesius)
@@ -50,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
         //kunci koordinat y supaya tidak berubah jika data terlalu besar
         //contoh: https://i.stack.imgur.com/LDCE7.png
         graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMaxY(100);
-        graph.getViewport().setMinY(-100);
+        graph.getViewport().setMaxY(50);
+        graph.getViewport().setMinY(-50);
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMaxX(50);
+        graph.getViewport().setMinX(-50);
     }
 
     //method onclick tombol
@@ -64,20 +68,21 @@ public class MainActivity extends AppCompatActivity {
 
     //method untuk menggambar grafik berdasarkan koordinat x dan y
     private void gambarGrafGaris(double x, double y) {
-        double d = x + y;
+        double d = x * y;
         int jum = (int) d;
 
         //membuat batas minimum x dan y
-        x = x * (-3 * (jum));
-        y = y * (-3 * (jum));
+        x = x + (-3 * (100 / 2));
+        y = y + (-3 * (100 / 2));
 
         //mengambar grafik
-        DataPoint[] point = new DataPoint[jum];
-        for (int i = 0; i < jum; i++) {
+        DataPoint[] point = new DataPoint[100];
+        for (int i = 0; i < 100; i++) {
             point[i] = new DataPoint(x, y);
             x += 3;
             y += 3;
         }
         graph.addSeries(series = new LineGraphSeries<>(point));
+        series.resetData(point);
     }
 }
