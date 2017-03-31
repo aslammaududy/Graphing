@@ -10,7 +10,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class MainActivity extends AppCompatActivity {
-    double xaxis, yaxis;
+    double xaxis, yaxis, xy = 10;
     private LineGraphSeries<DataPoint> coorSeries, series;
     private GraphView graph;
     private EditText et_xAxis, et_yAxis;
@@ -54,19 +54,26 @@ public class MainActivity extends AppCompatActivity {
 
         //kunci koordinat y supaya tidak berubah jika data terlalu besar
         //contoh: https://i.stack.imgur.com/LDCE7.png
+        setKoordinat(xy);
+    }
+
+    private void setKoordinat(double xy) {
         graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMaxY(50);
-        graph.getViewport().setMinY(-50);
+        graph.getViewport().setMaxY(xy);
+        graph.getViewport().setMinY(xy * (-1));
 
         graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMaxX(50);
-        graph.getViewport().setMinX(-50);
+        graph.getViewport().setMaxX(xy);
+        graph.getViewport().setMinX(xy * (-1));
     }
 
     //method onclick tombol
     public void gambarOnClick(View view) {
         xaxis = Double.parseDouble(et_xAxis.getText().toString());
         yaxis = Double.parseDouble(et_yAxis.getText().toString());
+
+        xy = xaxis * yaxis;
+        setKoordinat(xy);
 
         series.resetData(gambarGrafGaris(xaxis, yaxis));
     }
