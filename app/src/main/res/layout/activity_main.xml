@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +7,9 @@
     tools:context="com.aslammaududy.graphing.MainActivity">
 
     <com.jjoe64.graphview.GraphView
-        android:layout_height="230dp"
+        android:id="@+id/graph"
         android:layout_width="match_parent"
-        android:id="@+id/graph"/>
+        android:layout_height="230dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Nilai X"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/y_axis"
@@ -33,7 +32,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Nilai Y"
-            android:inputType="number" />
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -42,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
-        android:text="Gambar"
-        android:onClick="gambarOnClick"/>
+        android:onClick="gambarOnClick"
+        android:text="Gambar" />
 
 </LinearLayout>

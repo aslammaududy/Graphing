@@ -11,7 +11,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class MainActivity extends AppCompatActivity {
     double xaxis, yaxis;
-    private LineGraphSeries<DataPoint> series;
+    private LineGraphSeries<DataPoint> coorSeries, series;
     private GraphView graph;
     private EditText et_xAxis, et_yAxis;
 
@@ -43,9 +43,14 @@ public class MainActivity extends AppCompatActivity {
             y += 10;
         }
 
+        series = new LineGraphSeries<>();
+        graph.addSeries(series);
+
         //gambarkan koordinat x dan y(kartesius)
-        graph.addSeries(series = new LineGraphSeries<>(dataPoints));
-        graph.addSeries(series = new LineGraphSeries<>(dataPoints1));
+        coorSeries = new LineGraphSeries<>(dataPoints);
+        coorSeries = new LineGraphSeries<>(dataPoints1);
+        graph.addSeries(coorSeries);
+        graph.addSeries(coorSeries);
 
         //kunci koordinat y supaya tidak berubah jika data terlalu besar
         //contoh: https://i.stack.imgur.com/LDCE7.png
@@ -63,26 +68,23 @@ public class MainActivity extends AppCompatActivity {
         xaxis = Double.parseDouble(et_xAxis.getText().toString());
         yaxis = Double.parseDouble(et_yAxis.getText().toString());
 
-        gambarGrafGaris(xaxis, yaxis);
+        series.resetData(gambarGrafGaris(xaxis, yaxis));
     }
 
     //method untuk menggambar grafik berdasarkan koordinat x dan y
-    private void gambarGrafGaris(double x, double y) {
-        double d = x * y;
-        int jum = (int) d;
+    private DataPoint[] gambarGrafGaris(double x, double y) {
 
         //membuat batas minimum x dan y
         x = x + (-3 * (100 / 2));
         y = y + (-3 * (100 / 2));
 
         //mengambar grafik
-        DataPoint[] point = new DataPoint[100];
+        DataPoint[] points = new DataPoint[100];
         for (int i = 0; i < 100; i++) {
-            point[i] = new DataPoint(x, y);
+            points[i] = new DataPoint(x, y);
             x += 3;
             y += 3;
         }
-        graph.addSeries(series = new LineGraphSeries<>(point));
-        series.resetData(point);
+        return points;
     }
 }
