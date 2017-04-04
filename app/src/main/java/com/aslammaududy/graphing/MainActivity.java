@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         xaxis = Double.parseDouble(et_xAxis.getText().toString());
         yaxis = Double.parseDouble(et_yAxis.getText().toString());
 
-        xy = xaxis * yaxis;
+        xy = (xaxis * yaxis) / 2;
         setKoordinat(xy);
 
         series.resetData(gambarGrafGaris(xaxis, yaxis));
