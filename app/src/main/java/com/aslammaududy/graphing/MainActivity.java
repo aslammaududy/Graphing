@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     double xaxis, yaxis, xy = 10;
     private LineGraphSeries<DataPoint> coorSeries, series;
     private GraphView graph;
-    private EditText et_xAxis, et_yAxis;
+    private EditText et_xAxis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         graph = (GraphView) findViewById(R.id.graph);
         et_xAxis = (EditText) findViewById(R.id.x_axis);
-        et_yAxis = (EditText) findViewById(R.id.y_axis);
-
         DataPoint[] dataPoints = new DataPoint[400];
         DataPoint[] dataPoints1 = new DataPoint[400];
         double x = -100;
@@ -70,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     //method onclick tombol
     public void gambarOnClick(View view) {
         xaxis = Double.parseDouble(et_xAxis.getText().toString());
-        yaxis = Double.parseDouble(et_yAxis.getText().toString());
 
         xy = (xaxis * yaxis) / 2;
         setKoordinat(xy);
