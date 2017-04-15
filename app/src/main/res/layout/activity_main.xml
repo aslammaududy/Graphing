@@ -16,13 +16,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/x_axis"
+        <org.droidparts.widget.ClearableEditText
+            android:id="@+id/fungsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableRight="@drawable/ic_action_cancel"
             android:ems="10"
-            android:inputType="none|text" />
+            android:inputType="none" />
 
         <Button
             android:id="@+id/btn_gambar"
@@ -40,44 +41,56 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/sin"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="sin"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/cos"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="cos"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/tan"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="tan"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/x"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="x"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/y"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="y"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/pow"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:onClick="keypadOnClick"
             android:text="^"
             android:textAllCaps="false" />
 
@@ -95,64 +108,39 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/tujuh"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="7" />
 
             <Button
+                android:id="@+id/delapan"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="8" />
 
             <Button
+                android:id="@+id/sembilan"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="9" />
 
             <Button
+                android:id="@+id/bagi"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="c" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="4" />
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="5" />
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="6" />
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="/" />
         </LinearLayout>
 
@@ -162,31 +150,81 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/empat"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/lima"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/enam"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/kali"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="*" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/satu"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="1" />
 
             <Button
+                android:id="@+id/dua"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="2" />
 
             <Button
+                android:id="@+id/tiga"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="3" />
 
             <Button
+                android:id="@+id/kurang"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="-" />
         </LinearLayout>
 
@@ -196,24 +234,48 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/nol"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="0" />
 
             <Button
+                android:id="@+id/koma"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="." />
 
             <Button
+                android:id="@+id/krg_bka"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="(" />
+
+            <Button
+                android:id="@+id/krg_ttp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text=")" />
+
+            <Button
+                android:id="@+id/tambah"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
                 android:text="+" />
         </LinearLayout>
     </LinearLayout>
