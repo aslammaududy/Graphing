@@ -1,5 +1,6 @@
 package com.aslammaududy.graphing;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,11 +10,23 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.mariuszgromada.math.mxparser.Argument;
+import org.mariuszgromada.math.mxparser.Expression;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
-    double xaxis, yaxis, xy = 10;
+    double xy = 10;
+    double xaxis, yaxis;
     private LineGraphSeries<DataPoint> coorSeries, series;
+    private DataPoint[] points;
     private GraphView graph;
     private EditText et_fungsi;
+    boolean klik = false;
+    OperasiGrafik grafik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         graph = (GraphView) findViewById(R.id.graph);
         et_fungsi = (EditText) findViewById(R.id.fungsi);
+        et_fungsi.setKeyListener(null);
+        // et_hasil = (EditText) findViewById(R.id.hasil);
         DataPoint[] dataPoints = new DataPoint[400];
         DataPoint[] dataPoints1 = new DataPoint[400];
         double x = -100;
@@ -50,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         graph.addSeries(coorSeries);
         graph.addSeries(coorSeries);
 
+        coorSeries.setColor(Color.GRAY);
+
         //kunci koordinat y supaya tidak berubah jika data terlalu besar
         //contoh: https://i.stack.imgur.com/LDCE7.png
         setKoordinat(xy);
@@ -67,12 +84,42 @@ public class MainActivity extends AppCompatActivity {
 
     //method onclick tombol gambar
     public void gambarOnClick(View view) {
-        xaxis = Double.parseDouble(et_fungsi.getText().toString());
+        Argument argument = new Argument("x = 1");
+        Expression fungsi = new Expression(et_fungsi.getText().toString(), argument);
 
-        xy = (xaxis * yaxis) / 2;
-        setKoordinat(xy);
+        grafik = new OperasiGrafik(fungsi, argument);
+        klik = true;
+        if (grafik.isFungsiKuadrat(fungsi)) //untuk fungsi kuadrat
+        {
+            xaxis = grafik.Xs;
+            yaxis = grafik.Yp;
+            xy = (xaxis * yaxis);
+            if (xy < 0) {
+                xy *= -1;
+            } else if (xy == 0) {
+                xy = 7;
+            }
+            setKoordinat(xy);
+            series.resetData(gambarFungsiKuadrat(grafik.xFK, grafik.yFK));
+        }
+        //untuk fungsi trigonometri
+        else if (grafik.isFungsiTrigon(fungsi)) {
+            grafik.cariFungsiTrigon();
 
-        series.resetData(gambarGrafGaris(xaxis, yaxis));
+            setKoordinat(7);
+            series.resetData(gambarFungsiTrigon(grafik.xTrigon, grafik.yTrigon));
+        }
+        //untuk persamaan linier (y=mx+b)
+        else {
+            grafik.cariFungsiLinier();
+
+            xy = grafik.tipotLinier.get(0.0) * 2;
+            if (xy < 0) {
+                xy *= -1;
+            }
+            setKoordinat(xy);
+            series.resetData(gambarFungsiLinier(grafik.tipotLinier));
+        }
     }
 
     //method untuk urus input ke dalam layar fungsi
@@ -85,15 +132,20 @@ public class MainActivity extends AppCompatActivity {
 
     //method onclick keypad
     public void keypadOnClick(View view) {
+        if (klik) {
+            et_fungsi.setText("");
+        }
+        klik = false;
+
         switch (view.getId()) {
             case R.id.sin:
-                urusInput("sin(");
+                urusInput("sin");
                 break;
             case R.id.cos:
-                urusInput("cos(");
+                urusInput("cos");
                 break;
             case R.id.tan:
-                urusInput("tan(");
+                urusInput("tan");
                 break;
             case R.id.x:
                 urusInput("x");
@@ -155,22 +207,52 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sembilan:
                 urusInput("9");
                 break;
+            case R.id.hapus:
+                et_fungsi.setText("");
+                break;
+            case R.id.bksp:
+                String teks = et_fungsi.getText().toString();
+                if (teks.length() > 0) {
+                    String teksBaru = teks.substring(0, teks.length() - 1);
+                    et_fungsi.setText(teksBaru);
+                }
+                break;
         }
     }
 
-    //method untuk menggambar grafik berdasarkan koordinat x dan y
-    private DataPoint[] gambarGrafGaris(double x, double y) {
-
-        //membuat batas minimum x dan y
-        x = x + (-3 * (100 / 2));
-        y = y + (-3 * (100 / 2));
-
+    //method untuk menggambar grafik fungsi linier
+    private DataPoint[] gambarFungsiLinier(HashMap<Double, Double> tipotLinier) {
+        ArrayList<Double> x = new ArrayList<>();
+        ArrayList<Double> y = new ArrayList<>();
+        points = new DataPoint[200];
+        for (Map.Entry e : tipotLinier.entrySet()) {
+            x.add((Double) e.getKey());
+            y.add((Double) e.getValue());
+        }
+        Collections.sort(x);
+        Collections.sort(y);
         //mengambar grafik
-        DataPoint[] points = new DataPoint[100];
-        for (int i = 0; i < 100; i++) {
-            points[i] = new DataPoint(x, y);
-            x += 3;
-            y += 3;
+        for (int i = 0; i < 200; i++) {
+            points[i] = new DataPoint(x.get(i), y.get(i));
+        }
+        return points;
+    }
+
+    //method untuk menggambar grafik fungsi kuadrat
+    private DataPoint[] gambarFungsiKuadrat(ArrayList<Double> xFK, ArrayList<Double> yFK) {
+        points = new DataPoint[xFK.size()];
+        //mengambar grafik
+        for (int i = 0; i < points.length; i++) {
+            points[i] = new DataPoint(xFK.get(i), yFK.get(i));
+        }
+        return points;
+    }
+
+    private DataPoint[] gambarFungsiTrigon(ArrayList<Double> xTrigon, ArrayList<Double> yTrigon) {
+        points = new DataPoint[xTrigon.size()];
+        //menggambar grafik
+        for (int i = 0; i < points.length; i++) {
+            points[i] = new DataPoint(xTrigon.get(i), yTrigon.get(i));
         }
         return points;
     }

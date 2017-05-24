@@ -37,41 +37,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
+        android:background="?attr/colorButtonNormal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/sin"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="keypadOnClick"
             android:text="sin"
             android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/cos"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:onClick="keypadOnClick"
-            android:text="cos"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/tan"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:onClick="keypadOnClick"
-            android:text="tan"
-            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/x"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="keypadOnClick"
             android:text="x"
             android:textAllCaps="false" />
@@ -79,20 +64,34 @@
         <Button
             android:id="@+id/y"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="keypadOnClick"
             android:text="y"
             android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/pow"
+
+        <ImageButton
+            android:id="@+id/bksp"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="keypadOnClick"
-            android:text="^"
+            android:src="@drawable/ic_backspace_black_16dp"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/hapus"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="keypadOnClick"
+            android:text="C"
+            android:textAllCaps="false" />
+
 
     </LinearLayout>
 
@@ -106,6 +105,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cos"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="cos"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/tujuh"
@@ -150,6 +159,16 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/tan"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="tan"
+                android:textAllCaps="false" />
+
+            <Button
                 android:id="@+id/empat"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
@@ -190,6 +209,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pow"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="^"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/satu"
@@ -234,24 +263,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/nol"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="keypadOnClick"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/koma"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="keypadOnClick"
-                android:text="." />
-
-            <Button
                 android:id="@+id/krg_bka"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
@@ -270,6 +281,24 @@
                 android:text=")" />
 
             <Button
+                android:id="@+id/nol"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/koma"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="keypadOnClick"
+                android:text="." />
+
+            <Button
                 android:id="@+id/tambah"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
@@ -279,6 +308,4 @@
                 android:text="+" />
         </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>
