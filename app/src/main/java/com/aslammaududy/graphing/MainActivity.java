@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         klik = true;
         if (grafik.isFungsiKuadrat(fungsi)) //untuk fungsi kuadrat
         {
+            grafik.cariFungsiKuadrat();
             xaxis = grafik.Xs;
             yaxis = grafik.Yp;
             xy = (xaxis * yaxis);
