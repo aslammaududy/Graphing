@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aslammaududy.graphing.BantuanActivity">
+
+    <LinearLayout
+        android:id="@+id/fungsilinier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/list_selector_background"
+        android:onClick="listOnClick"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="139dp"
+            android:layout_height="86dp"
+            android:src="@drawable/fungsilinier" />
+
+        <TextView
+            android:id="@+id/fungsi_linier"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Fungsi Linier" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fungsikuadrat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/list_selector_background"
+        android:onClick="listOnClick"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="139dp"
+            android:layout_height="86dp"
+            android:src="@drawable/fungsikuadrat" />
+
+        <TextView
+            android:id="@+id/fungsi_kuadrat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Fungsi Kuadrat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/trigonometri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/list_selector_background"
+        android:onClick="listOnClick"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="139dp"
+            android:layout_height="86dp"
+            android:src="@drawable/trigonometri" />
+
+        <TextView
+            android:id="@+id/trigon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Trigonometri" />
+    </LinearLayout>
+</LinearLayout>

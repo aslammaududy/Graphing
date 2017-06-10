@@ -1,8 +1,12 @@
 package com.aslammaududy.graphing;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -70,6 +74,22 @@ public class MainActivity extends AppCompatActivity {
         //kunci koordinat y supaya tidak berubah jika data terlalu besar
         //contoh: https://i.stack.imgur.com/LDCE7.png
         setKoordinat(xy);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tbl_bantuan, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.tbl_bantuan) {
+            Intent intent = new Intent(this, BantuanActivity.class);
+            startActivity(intent);
+        }
+        return true;
     }
 
     private void setKoordinat(double xy) {

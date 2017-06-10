@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Graphing</string>
+
+    <string name="fungsi_linier">Fungsi Linier adalah fungsi yang jika digambarkan pada bidang
+    kartesius akan membentuk garis lurus (linier = lurus) seperti pada gambar di atas. Fungsi ini
+        dapat dituliskan sebagai berikut: f(x)=mx+b. Atau seperti pada gambar di atas, grafik
+    tersebut digambarkan dengan fungsi: 2*x-2. note: '*' merupakan simbol perkalian pada matematika
+    sedangkan 'x' merupakan variabel (peubah) pada matematika.</string>
+
+    <string name="fungsi_kuadrat">Fungsi Kuadrat adalah fungsi yang jika digambarkan pada bidang
+    kartesius akan membentuk sebuah kurva/parabola seperti pada gambar di atas. Fungsi ini dapat
+    dituliskan sebagai berikut: f(x)=ax^2+bx+c. Atau seperti pada gambar di atas, grafik tersebut
+    digambarkan dengan fungsi: x^2-2*x-15. note: '*' merupakan simbol perkalian pada matematika,
+    '^' simbol pangkat pada matematika, dan 'x' merupakan variable (peubah) pada matematika.</string>
+
+    <string name="trigonometri">Fungsi Trigonometri merupakan fungsi yang jika digambarkan pada
+    bidang kartesius akan membentuk gelombang seperti pada gambar di atas. Fungsi ini dapat
+    dituliskan sebagai berikut: f(x)=a*sin(x). Atau seperti pada gambar di atas, grafik tersebut
+    digambarkan dengan fungsi: 2*sin(x). note: 'sin' dapat digantikan dengan 'cos' atau 'tan', '*'
+    merupakan simbol matematika untuk perkalian, dan 'x' merupakan simbol matematika untuk variable
+    (peubah) pada matematika</string>
 </resources>
